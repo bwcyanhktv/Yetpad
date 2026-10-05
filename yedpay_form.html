@@ -24,25 +24,10 @@
             margin: 0 auto;
         }
 
-        /* 頂部返回與標題 */
-        .header-nav {
-            margin-bottom: 20px;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #64748b;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            transition: color 0.2s;
-        }
-
-        .back-link:hover {
-            color: #2563eb;
+        /* 標題標識 */
+        .page-title-box {
+            margin-bottom: 25px;
+            text-align: center;
         }
 
         .page-title-box h1 {
@@ -64,7 +49,6 @@
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(30, 58, 138, 0.05);
-            margin-top: 20px;
         }
 
         .section-heading {
@@ -242,13 +226,10 @@
 <body>
     <div class="page-container">
         
-        <!-- 導航返回 -->
-        <div class="header-nav">
-            <a href="index.html" class="back-link">← 返回主頁</a>
-            <div class="page-title-box">
-                <h1>Yedpay 收費</h1>
-                <p>填寫收費資料並發送 WhatsApp 通知給 OSC</p>
-            </div>
+        <!-- 頁面標題（獨立單頁設計，不含返回主頁） -->
+        <div class="page-title-box">
+            <h1>Yedpay 收費</h1>
+            <p>填寫收費資料並發送 WhatsApp 通知給 OSC</p>
         </div>
 
         <!-- 主表單卡片 -->
@@ -261,8 +242,7 @@
                     <label>停車場 <span>*</span></label>
                     <select id="carpark" class="form-control" required>
                         <option value="" disabled selected>選擇停車場</option>
-                        <option value="International Gateway Center (IGC)">International Gateway Center (IGC)</option>
-                        <option value="其他場區">其他場區</option>
+                        <option value="P919 威信旭日街停車場">P919 威信旭日街停車場</option>
                     </select>
                 </div>
 
@@ -360,10 +340,10 @@
             }
 
             const message = generateMessage();
-            const oscPhone = "85298540066"; // OSC 電話號碼 (去咗 + 號方便 wa.me 連結)
+            const oscPhone = "85298540066"; // OSC 電話號碼
             const encodedMessage = encodeURIComponent(message);
             
-            // 開啟 WhatsApp 官方連結 (支援流動版及網頁版)
+            // 開啟 WhatsApp 官方連結
             const whatsappUrl = `https://wa.me/${oscPhone}?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
         }
